@@ -1,7 +1,7 @@
 export interface Instruction {
   id: string;
   label: string;
-  component: string;
+  component: "InstructionComponent";
 }
 
 const instructions: Instruction[] = [

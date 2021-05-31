@@ -19,10 +19,8 @@ const InstructionComponent: React.FC<InstructionCompProps> = ({ content }) => {
 
 const datas = [...products, ...instructions];
 
-interface Components {
-  [key: string]: React.FC<ProductCompProps> | React.FC<InstructionCompProps>;
-}
-const components: Components = {
+
+const components = {
   ProductComponent,
   InstructionComponent,
 };
@@ -31,7 +29,9 @@ const App: React.FC = () => {
   return (
     <div>
       {datas.map((data) => {
-        const Component = components[data.component];
+        const Component = components[data.component] as React.FC<{
+          content: Product | Instruction;
+        }>;
         return <Component content={data} />;
       })}
     </div>
